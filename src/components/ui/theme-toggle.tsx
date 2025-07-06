@@ -1,10 +1,19 @@
+
 'use client'
 
 import { useTheme } from 'next-themes'
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import { useEffect, useState } from 'react'
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   return (
     <button
@@ -19,4 +28,4 @@ export default function ThemeToggle() {
       )}
     </button>
   )
-} 
+}
